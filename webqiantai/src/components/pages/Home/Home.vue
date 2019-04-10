@@ -16,7 +16,7 @@
 	import goodsList from './goodsList'
 	import Header from '../../commons/Header'
 	//引入Tail组件
-	import Tail from '../../commons/Tail'
+	import Tail from '../../commons/Tail.vue'
 export default{
 	name:'Home',
 	components:{Banner,goodsList,Header,Tail},
