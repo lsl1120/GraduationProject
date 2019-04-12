@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link href="static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+<link href="static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
+<link href="lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+	#tishixinxi1{
+		color: red;
+		display: none;
+	}
+	
+	#tishixinxi2{
+		color: red;
+		display: none;
+	}
+	
+	#tishixinxi3{
+		color: red;
+		display: none;
+	}
+	#a_dl{
+		display: block;
+		width: 367px;
+		border-radius: 5px;
+		text-align: center;
+	}
+</style>
+
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<title>后台注册</title>
+<meta name="keywords" content="H-ui.admin v3.0,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.0，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header">后台管理系统-注册界面</div>
+<div class="loginWraper">
+	<div id="loginform" class="loginBox">
+		<form class="form form-horizontal" action="index.html" method="post">
+			<div class="row cl">
+				<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
+				<div class="formControls col-xs-8">
+					<input id="us" name="" type="text" placeholder="请输入邮箱" class="input-text size-L">
+					<!--<div id="tishixinxi1">请输入正确的邮箱</div>-->
+				</div>
+				
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
+				<div class="formControls col-xs-8">
+					<input id="pass" name="" type="password" placeholder="密码" class="input-text size-L">
+					<!--<div id="tishixinxi2">请重新输入密码</div>-->
+				</div>
+			</div>
+			<div class="row cl">
+				<div class="formControls col-xs-8 col-xs-offset-3">
+					<input class="input-text size-L" type="text" placeholder="验证码"  value="" style="width:185px;" id='code'>
+					<!-- <img src="images/VerifyCode.aspx.png"> -->
+					<a id="kanbuq" href="javascript:;" onclick="getCode()">点击获取验证码</a>
+					<!--<div id="tishixinxi3">请重新输入验证码</div>-->
+				</div>
+			</div>
+			<div class="row cl">
+				<div class="formControls col-xs-8 col-xs-offset-3">
+					<label for="online">
+						
+				</div>
+			</div>
+		</form>
+			<div class="row cl">
+				<div class="formControls col-xs-8 col-xs-offset-3">
+					<input name="" onclick='reg()' type="button" class="btn btn-success radius size-L" value="&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;">
+					<a id="a_dl" href="login.html">已有账号去登陆?</a>
+				</div>
+			</div>
+			
+
+	</div>
+</div>
+<div class="footer">Copyright</div>
+
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+let rootpath = 'http://127.0.0.1:4000'
+var countdown = 0;
+
+	var obj = $('#kanbuq');
+	var countdown = 10;
+	var timer = null;
+
+//邮箱验证
+function getCode(){
+	
+	let url = '/api/users/getcode'
+	let email = $('#us').val()
+	let youxiang = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g
+	if(youxiang.test(email)){
+		
+			$.post(rootpath + url, {email:email},function(res){
+				
+				alert(res.msg);
+			})
+			
+			//点击验证码按钮多少秒后才能再次获取
+		obj.removeAttr('onclick');
+		
+		timer = setInterval(function(){
+			countdown--;
+			
+			if(countdown <= 0){
+				
+				obj.attr('onclick','getCode()');
+				countdown = 10;
+				obj.html('点击获取验证码')
+				
+				clearInterval(timer)
+				
+			}else{
+					obj.html(countdown + '后再获取');
+			}
+			console.log(countdown)
+		},1000)
+		
+	}else{
+		alert('请输入正确的邮箱')
+	}
+}
+
+
+//注册
+function reg(){
+	let url = '/api/users/reg'
+	var data = {
+		us:$('#us').val(),
+		ps:$('#pass').val(),
+		code:$('#code').val()
+	}
+//	console.log(data)
+	$.post(rootpath + url,data,function(res){
+//		console.log(res)
+		alert(res.msg)
+		
+		
+		if(res.err == 0){
+			window.location.href = 'http://127.0.0.1:4000/admin/login.html';
+		}
+	})
+	
+	
+}
+
+</script>
+</body>
+</html>
