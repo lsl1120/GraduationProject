@@ -264,7 +264,8 @@ $('#fltype').change(function(){
 $('#flbtn').click(function(){
 	fuzzySearch = $('#chaxun').val();
 	console.log(fuzzySearch)
-	goodsData(nowPage,Classify,fuzzySearch)
+    goodsData(nowPage,Classify,fuzzySearch)
+    $('#chaxun').val("");
 })
 
 //删除函数				
