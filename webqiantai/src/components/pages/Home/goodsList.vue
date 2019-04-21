@@ -119,7 +119,9 @@
 		},
 		created(){
 			// this.addCart(id);
-		}
+			// this.getData()
+			
+		},
 	}
 </script>
 

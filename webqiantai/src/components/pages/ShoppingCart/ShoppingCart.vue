@@ -40,9 +40,7 @@
 					<span class="totalPrice">共<label class="totalNum">{{numTotale}}</label>件，￥<label>{{priceTotal}}</label></span>
 				</div>
 				<div class="right_box">
-					<div class="desc">
-						<p>去结算</p>
-					</div>
+					
 				</div>
 			</div>
 		<Tail></Tail>
@@ -75,6 +73,8 @@
 			loadMore(){
 					this.getData();
 			},
+
+			//购物车数据
 			getData(){
 				console.log( (window.localStorage.getItem('loginZh')) )
 				let cartData = {
@@ -99,7 +99,8 @@
 				console.log('回车事件')
 				console.log(item.goods_num)
 				console.log(item.goods_id)
-				let cartNum = {
+				if(item.goods_num > 1){
+					let cartNum = {
 					goods_num: item.goods_num,
 					goods_id: item.goods_id,
 					username: window.localStorage.getItem('loginZh'),
@@ -114,6 +115,12 @@
 				.catch((err)=>{
 					console.log(err)
 				})
+
+				}else{
+					item.goods_num == 1
+					this.$router.go(0)
+				}
+				
 			},
 
 			//点击增加
@@ -200,6 +207,7 @@
 			//反选
 	    	check(){
 	    		console.log(this.checked);
+				console.log(this.checked[0])
 	    		 if (this.checked.length  == this.ShoppingCart.length) {
 		            this.checkall = true
 		       }else{
@@ -236,6 +244,7 @@
 			//过滤器实现小计功能
 			keepTwoNum:function(value){
 				value=Number(value);
+				// toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
 				return value.toFixed(2);
 			}
 		},
