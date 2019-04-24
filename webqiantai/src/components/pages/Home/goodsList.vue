@@ -85,7 +85,7 @@
 			addCart(id){
 				console.log(id);
 				if( (window.localStorage.getItem('loginZh')) == null ){
-					console.log('请您先登录')
+					alert('请您先登录')
 				}else {
 					this.$axios.post('rootpath/api/goodsList/getById',{id:id},function(res){})
 					.then((res)=>{
@@ -104,7 +104,7 @@
 
 						this.$axios.post('rootpath/api/shoppingCart/addCart',cartData,function(res){})
 						.then((res)=>{
-							console.log(res.msg)
+							alert(res.msg)
 						})
 						.catch((err)=>{
 							console.log(res.msg)

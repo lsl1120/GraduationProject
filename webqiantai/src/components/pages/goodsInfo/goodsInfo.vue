@@ -20,12 +20,33 @@
 			<p>图文详情</p>
 		</div>
 		<div class="Img">
-			<img src="http://appimg.pba.cn/2017/03/20/e220061c25ad44cf02986206e1f253a0.jpg"/>
-			<img src="http://appimg.pba.cn/2017/03/20/20bc29d2bf5568bc63a33305c2a787a8.jpg"/>
-			<img src="http://appimg.pba.cn/2017/03/20/a3d19dfc48500e7b196b456bb66f7a27.jpg"/>
-			<img src="http://appimg.pba.cn/2017/03/20/cdd64c93772f15758763b7d8b95be649.jpg"/>
-			<img src="http://appimg.pba.cn/2017/03/20/f42e417b161f53d0a1320656633b3373.jpg"/>
-			<img src="http://appimg.pba.cn/2017/03/20/20cf1238036afd94e0a0e89c187050e9.jpg"/>
+			<img src="../../../../static/img/goodsInfo/968f2f25eba29ffaf0ee46378212e35d.jpg"/>
+			<img src="../../../../static/img/goodsInfo/1969517458b3360474c47baca6ee5291.jpg"/>
+			<img src="../../../../static/img/goodsInfo/5e446be1d525843ae666e70a4e89b7ed.jpg"/>
+			<img src="../../../../static/img/goodsInfo/6d39033d3056fcd9f4d21ba956030b02.jpg"/>
+			<img src="../../../../static/img/goodsInfo/1b1226c362121c8abfb47e8b785c6f56.jpg"/>
+			<img src="../../../../static/img/goodsInfo/1388fde5db4f80282b1d532bb7cee023.jpg"/>
+			<img src="../../../../static/img/goodsInfo/4b7d6aa0b1f5a82f44aae25f916ddc45.jpg"/>
+			<img src="../../../../static/img/goodsInfo/9d1407b43f75fb16b9c6f3a8a8c773b6.jpg"/>
+			<img src="../../../../static/img/goodsInfo/ab5e021ed9bf1e9849ef90ba116a678e.jpg"/>
+			<img src="../../../../static/img/goodsInfo/40dde74dfb97834e4724c646c97834f7.jpg"/>
+			<img src="../../../../static/img/goodsInfo/e083276377c97fe89751d71c486fbf4c.jpg"/>
+			<img src="../../../../static/img/goodsInfo/770c1b8d1fdde8d662179a9d3e8d2f2d.jpg"/>
+			<img src="../../../../static/img/goodsInfo/6a9ea7828153b7a0899f31cc3dcd4f7d.jpg"/>
+			<img src="../../../../static/img/goodsInfo/6739f9011672a47085b0b7c6887524de.jpg"/>
+			<img src="../../../../static/img/goodsInfo/7068f6d706bd9b2152b4d7b0abd683f7.jpg"/>
+			<img src="../../../../static/img/goodsInfo/3bda8a07220b7f35745619effa010fe5.jpg"/>
+			<img src="../../../../static/img/goodsInfo/2173507b3c4feb526d7623b431a6619e.jpg"/>
+			<img src="../../../../static/img/goodsInfo/c8b41d929e00009286888b2ea524725f.jpg"/>
+			<img src="../../../../static/img/goodsInfo/faf14ddc6b315d593877cf479acb6a71.jpg"/>
+			<img src="../../../../static/img/goodsInfo/bb5816cb5044cade78916462ba39e807.jpg"/>
+			<img src="../../../../static/img/goodsInfo/ec3357496a46fbfa2ad4eabf3a607209.jpg"/>
+			<img src="../../../../static/img/goodsInfo/4a0c59c9ef1d33374e4c5f5e3dfb02e6.jpg"/>
+			<img src="../../../../static/img/goodsInfo/bebd1ffc69d1e38516f5574f5481e43e.jpg"/>
+			<img src="../../../../static/img/goodsInfo/2fcfd288a61850276f3cdd839a0cce0c.jpg"/>
+			<img src="../../../../static/img/goodsInfo/c7c988118b06d9e481292bb2a15de4b9.jpg"/>
+			<img src="../../../../static/img/goodsInfo/122017770fbb9154b926115c031e4690.jpg"/>
+			<img src="../../../../static/img/goodsInfo/1f85019945acba7e1c9c9f26aed5580d.jpg"/>
 		</div>
 		</div>
 		<div class="infoFooter">
@@ -68,7 +89,7 @@
 			addCart(){
 				console.log(this.$route.query.id)
 				if( (window.localStorage.getItem('loginZh')) == null ){
-					console.log('请您先登录')
+					alert('请您先登录')
 				}else {
 					this.$axios.post('rootpath/api/goodsList/getById',{id:this.$route.query.id},function(res){})
 					.then((res)=>{
@@ -87,7 +108,7 @@
 						
 						this.$axios.post('rootpath/api/shoppingCart/addCart',cartData,function(res){})
 						.then((res)=>{
-							console.log(res.msg)
+							alert(res.msg)
 						})
 						.catch((err)=>{
 							console.log(res.msg)

@@ -54,10 +54,10 @@
 				zhe:[
 				{router:'/ClassifiList',zheImg:'../../../../static/img/classification/makeup.jpg'},
 				{router:'/ClassifiListTwo',zheImg:'../../../../static/img/classification/skin.jpg'},
-				// {router:'/ClassifiList',zheImg:'../../../../static/img/classification/mask.jpg'},
-				// {router:'/ClassifiList',zheImg:'../../../../static/img/classification/perfume.jpg'},
-				// {router:'/ClassifiList',zheImg:'../../../../static/img/classification/tools.jpg'},
-				// {router:'/ClassifiList',zheImg:'../../../../static/img/classification/foods.jpg'},
+				{router:'/ClassifiList',zheImg:'../../../../static/img/classification/mask.jpg'},
+				{router:'/ClassifiList',zheImg:'../../../../static/img/classification/perfume.jpg'},
+				{router:'/ClassifiList',zheImg:'../../../../static/img/classification/tools.jpg'},
+				{router:'/ClassifiList',zheImg:'../../../../static/img/classification/foods.jpg'},
 				
 				],
 				jie:[

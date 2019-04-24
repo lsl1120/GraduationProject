@@ -15,6 +15,7 @@
 				<p>
 					<input type="text" id="regVal" value="" v-model="regZh" placeholder="请输入11位手机号" @blur="regUse" />
 					<input type="password" name="" v-model="regMm" placeholder="请输入6位以上密码" id="regPass" @blur="regPass" />
+					<input type="password" name="" v-model="qrMm" placeholder="请再次确认密码" id="affirmPass" @blur="affirmPass" />
 				</p>
 				<!--<router-link to="/Use/Login">-->
 					<input type="submit" value="注册" id="regBtn" @click="regBtn" />
@@ -37,8 +38,10 @@
 				name:'我是Reg',
 				regZh:'',
 				regMm:'',
+				qrMm:'',
 				regUsername:false,
 				regPassword:false,
+				qrPassword:false,
 				
 			}
 		},
@@ -62,8 +65,20 @@
 					console.log('密码长度为6位以上')
 				}
 			},
+			affirmPass(){
+				console.log(this.qrMm)
+				console.log(this.regMm)
+				if( this.qrMm == this.regMm ){
+					console.log('密码确认成功')
+					this.qrPassword = true
+
+				}else{
+					console.log('密码确认错误')
+					this.qrPassword = false
+				}
+			},
 			regBtn(){
-				if(this.regUsername == true && this.regPassword == true){
+				if(this.regUsername == true && this.regPassword == true && this.qrPassword == true){
 					console.log(this.regUsername)
 					console.log(this.regPassword)
 					let regData = {

@@ -140,13 +140,11 @@ Router.post('/getById',(req,res)=>{
 Router.post('/search',(req,res)=>{
 	let { searchname } = req.body
 	console.log('------------------------------搜索框传过来的值------------------------',searchname)
-	goodsModel.find({goods_name:searchname})
+	goodsModel.find({goods_name:{$regex:searchname}})
 	.then((data)=>{
 		console.log('------------------------------搜索查询goods表返回的数据---------------------------',data)
 		console.log(data.length)
-		if(data.length == 1){
 			res.send(utils.sendData(0,'搜索查询对应商品成功', data));
-		}
 	})
 	.catch((err)=>{
 		console.log(err)
