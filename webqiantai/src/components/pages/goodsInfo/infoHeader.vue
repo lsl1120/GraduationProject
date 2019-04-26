@@ -1,7 +1,7 @@
 <template>
 	<div class="infoHeader">
 		<!--<router-link to='/Home'>-->
-		<span @click="huitui"><img src="http://pbaimage.pba.cn/2014/m.pba.cn/images/new/back2.jpg"/></span>
+		<span @click="huitui"><img src="../../../../static/img/back2.jpg"/></span>
 		<!--</router-link>-->
 		<span good_info>商品详情</span>
 		<span class="icon_cart"><img src="../../../../static/image/icon_shoppingcart.png"/></span>

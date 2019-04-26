@@ -142,7 +142,7 @@ $('#addgoods').on('click', function(){
             console.log('发送成功')
             console.log(res)
             if(res.err == 0){
-                console.log('添加商品成功')
+                alert('添加商品成功')
                 window.location.href = 'http://127.0.0.1:4000/html/index.html';
                 window.location.reload()
             }else{
