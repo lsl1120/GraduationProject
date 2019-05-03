@@ -159,7 +159,7 @@
 		},
 		created(){
 //			this.getData();
-			// this.addCart(id);
+
 		}
 	}
 	

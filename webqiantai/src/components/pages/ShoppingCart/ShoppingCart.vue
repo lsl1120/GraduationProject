@@ -110,7 +110,7 @@
 				})
 				.then((res)=>{
 					console.log(res.msg)
-					this.$router.go(0)
+					// this.$router.go(0)
 				})
 				.catch((err)=>{
 					console.log(err)
@@ -140,7 +140,7 @@
 				})
 				.then((res)=>{
 					console.log(res.msg)
-					this.$router.go(0)
+					// this.$router.go(0)
 				})
 				.catch((err)=>{
 					console.log(err)
@@ -162,7 +162,7 @@
 					})
 					.then((res)=>{
 						console.log(res.msg)
-						this.$router.go(0)
+						// this.$router.go(0)
 					})
 					.catch((err)=>{
 						console.log(err)
@@ -253,6 +253,8 @@
 	          numTotale: function() {
 	            var total = 0;
 	            for(var i = 0; i < this.checked.length; i++) {
+					console.log(this.checked)
+					console.log(this.ShoppingCart[i])
 	                var item = this.ShoppingCart[i];
 	                    total +=Number(item.goods_num);
 	            }

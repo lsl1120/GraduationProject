@@ -62,13 +62,13 @@ $('#uploadImg').on('click', function(){
 
 //添加商品事件
 $('#addgoods').on('click', function(){
-    console.log('商品id:',$('#goodsId').val())
-    console.log('商品名称:',$('#goodsName').val())
-    console.log('商品描述:',$('#simpleDesc').val())
-    console.log('商品价格:',$('#shopPrice').val())
-    console.log('商品分类:',$('#classify').val())
-    console.log('商品图片',$('#image').attr('src').split('/')[3] + '/' + $('#image').attr('src').split('/')[4])
-    console.log($('#image').attr('src'))
+    // console.log('商品id:',$('#goodsId').val())
+    // console.log('商品名称:',$('#goodsName').val())
+    // console.log('商品描述:',$('#simpleDesc').val())
+    // console.log('商品价格:',$('#shopPrice').val())
+    // console.log('商品分类:',$('#classify').val())
+    // console.log('商品图片',$('#image').attr('src').split('/')[3] + '/' + $('#image').attr('src').split('/')[4])
+    // console.log($('#image').attr('src'))
 
     let goodsId = $('#goodsId').val()
     let goodsName = $('#goodsName').val()
@@ -114,7 +114,7 @@ $('#addgoods').on('click', function(){
         showclass = true
     }
 
-    if(listPicture == 'undefined/undefined'){
+    if(listPicture == ''){
         showlist
     }else{
         showlist = true
@@ -137,21 +137,21 @@ $('#addgoods').on('click', function(){
     }
 
     if( showid == true && showname == true && showdesc == true && showprice == true && showclass == true && showlist == true ){       
-        console.log('发起请求')
+        // console.log('发起请求')
         $.post(rootapi + '/api/inDescribe/describe', goodsData, function(res){
-            console.log('发送成功')
-            console.log(res)
+            // console.log('发送成功')
+            // console.log(res)
             if(res.err == 0){
                 alert('添加商品成功')
                 window.location.href = 'http://127.0.0.1:4000/html/index.html';
                 window.location.reload()
             }else{
-                console.log('添加商品失败')
+                alert('添加商品失败')
             }
         })
 
     }else{
-        console.log('请填写完所有项')
+        alert('请填写完所有项')
     }
 
 
@@ -206,6 +206,7 @@ goodsData(nowPage,Classify,fuzzySearch)
 
 //获取商品数据
 function goodsData(targetpage,Classify,fuzzySearch){
+    console.log(targetpage)
     let goodsdata = {
         targetpage:targetpage,
         pagesize:pageSize,
@@ -219,6 +220,7 @@ function goodsData(targetpage,Classify,fuzzySearch){
         if(res.err == 0){
             loadingTbody(res.data.data);
             total = res.data.total
+            //ceil向上取整
             allPage = Math.ceil(total / pageSize)
             $('#page').text(`${nowPage}/${allPage}页`)
         }else{
