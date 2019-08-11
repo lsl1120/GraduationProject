@@ -339,8 +339,9 @@
 				
 			}
 			.goods_desc{
-				    float: right;
+				    
 					display: inline-block;
+					// float: right;
 					.w(200);
 					.h(94);
 					.p{
